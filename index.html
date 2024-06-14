@@ -57,7 +57,7 @@
         }
 
         .content {
-            display: none; /* Hidden until user clicks to enter */
+            display: none;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -177,7 +177,7 @@
                     overlay.style.display = 'none';
                     content.style.display = 'flex';
                     bgMusic.play();
-                }, 1000); // matches the transition duration
+                }, 1000); // this does something i think so that they match up
             });
         });
     </script>
