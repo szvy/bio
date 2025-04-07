@@ -1,0 +1,281 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  color: white;
+  font-size: 1.5vw;
+  cursor: pointer;
+  transition: opacity 1s ease;
+}
+
+#enter-text {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 10px;
+  animation: pulse 2s infinite;
+  font-size: 1vw;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: white;
+}
+
+.profile-box {
+  border-color: white;
+  border: 2px solid;
+  background-color: rgba(128, 128, 128, 0.9);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp 1s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
+  max-width: 60vw;
+  font-size: 1.5vw;
+}
+
+@keyframes fadeInUp {
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+#profile-pic {
+  border-radius: 50%;
+  width: 10vw;
+  height: 10vw;
+  margin-bottom: 10px;
+  transition: transform 0.5s ease;
+}
+
+#profile-pic:hover {
+  transform: scale(1.05);
+}
+
+#username {
+  font-size: 2vw;
+  background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: rainbow 3s linear infinite;
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  font-size: 1vw;
+  padding: 5px 10px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+  border: 2px solid white;
+  margin-bottom: 5px;
+}
+
+.link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: white;
+  transform: scale(1.05);
+}
+
+#volume-control {
+  margin-top: 10px;
+  width: 20vw;
+  -webkit-appearance: none;
+  background: black;
+  height: 5px;
+  outline: none;
+}
+
+#volume-control::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: white;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#volume-control::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: white;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.volume-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.volume-label {
+  color: white;
+  margin-top: 10px;
+  font-size: 1vw;
+}
+
+@media (max-width: 768px) {
+  #overlay {
+    font-size: 3vw;
+  }
+
+  #enter-text {
+    font-size: 2.5vw;
+  }
+
+  .profile-box {
+    font-size: 2.5vw;
+  }
+
+  #profile-pic {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  #username {
+    font-size: 4vw;
+  }
+
+  .link {
+    font-size: 2vw;
+  }
+
+  #volume-control {
+    width: 30vw;
+  }
+}
+
+.music-player {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(128, 128, 128, 0.8);
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 1vw;
+  z-index: 20;
+}
+
+.music-player button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2vw;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.music-player button:hover {
+  transform: scale(1.2);
+}
+
+#song-title {
+  font-size: 1vw;
+  max-width: 30vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.music-player input[type="range"] {
+  width: 10vw;
+  height: 5px;
+  background: black;
+  outline: none;
+  cursor: pointer;
+}
+
+.music-player input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+}
+
+.music-player input[type="range"]::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+}
+
+.music-player .volume-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+  margin-left: 1vw;
+}
+
+#volume-emoji {
+  font-size: 1.5vw;
+  cursor: default;
+  user-select: none;
+}
+
+#volume-icon:hover {
+  color: #ccc;
+}

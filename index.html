@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>szvy.win</title>
-    <link rel="icon" type="image/png" href="pfp.png"/>
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/assets/pfp.png" />
+    <link rel="stylesheet" href="/assets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-    <meta name="google-adsense-account" content="ca-pub-3298943858369433">
 </head>
+
 <body>
     <div id="overlay">
         <div id="enter-text">click anywhere to enter</div>
     </div>
     <video autoplay muted loop id="bg-video">
-        <source src="bg.mp4" type="video/mp4">
+        <source src="/assets/bg.mp4" type="video/mp4">
     </video>
     <div class="content">
         <div class="profile-box">
             <div class="profile">
-                <img src="pfp.png" alt="Profile Picture" id="profile-pic">
+                <img src="/assets/pfp.png" alt="Profile Picture" id="profile-pic">
                 <h1 id="username">szvy</h1>
             </div>
             <p id="p1">hi, im szvy. a 14 year old web developer. 🏳️‍⚧️</p>
             <p id="p1">projects</p>
             <div class="links">
-                <a href="https://szvy.lol" class="link">szvy central</a>
-                <a href="https://vistachat.szvy.win" class="link">vistachat</a>
-                <a href="https://sizzlent.com" class="link">sizzlent</a>
-                <a href="https://szvyflix.vercel.app" class="link">szvyflix</a>
-            </div> <br>
+                <a href="https://github.com/szvy/central" class="link">szvy central</a>
+                <a href="https://github.com/szvy/vistachat" class="link">vistachat</a>
+                <a href="https://github.com/szvy/sizzlent" class="link">sizzlent</a>
+                <a href="https://github.com/szvy/linkbot" class="link">linkbot</a>
+            </div>
+            <br>
             <p id="p1">social medias</p>
             <div class="links">
                 <a href="https://www.youtube.com/channel/UC3OwuSVWK2M3Ubhsr_1ReIA" class="link">youtube</a>
@@ -44,34 +46,22 @@
             <div class="links">
                 <a href="mailto:alyssa@szvy.win" class="link">email</a>
             </div>
-            <div class="volume-container">
-                <input type="range" id="volume-control" min="0" max="1" step="0.01" value="1">
-                <label for="volume-control" class="volume-label">volume</label>
-            </div>
         </div>
-
-        <audio id="bg-music" src="bg.mp3" loop></audio>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const overlay = document.getElementById('overlay');
-            const content = document.querySelector('.content');
-            const bgMusic = document.getElementById('bg-music');
-            const volumeControl = document.getElementById('volume-control');
+    <div class="music-player" id="music-player-container" style="display: none;">
+        <button id="prev-btn">⏮️</button>
+        <button id="play-pause-btn">▶️</button>
+        <button id="next-btn">⏭️</button>
+        <span id="song-title">rizz</span>
+        <span class="volume-wrapper">
+            <span id="volume-emoji">🔊</span>
+            <input type="range" id="volume-control" min="0" max="1" step="0.01" value="1" title="Volume">
+        </span>
+    </div>
 
-            overlay.addEventListener('click', () => {
-                overlay.style.opacity = '0';
-                setTimeout(() => {
-                    overlay.style.display = 'none';
-                    content.style.display = 'flex';
-                    bgMusic.play();
-                }, 1000);
-            });
-            volumeControl.addEventListener('input', (e) => {
-                bgMusic.volume = e.target.value;
-            });
-        });
-    </script>
+    <audio id="music-player" src="/audios/NEED ME NOW - Awesomemay.mp3"></audio>
+    <script src="/assets/script.js"></script>
 </body>
+
 </html>
